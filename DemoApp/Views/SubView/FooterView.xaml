@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="DemoApp.Views.SubView.FooterView"
+    BackgroundColor="WhiteSmoke">
+    <ContentView.Content>
+        <StackLayout>
+            <Grid ColumnDefinitions="*, 1, *, 1, *, 1" RowDefinitions="1,40">
+                <BoxView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    HeightRequest="{DynamicResource HeightWidth1}"
+                    HorizontalOptions="FillAndExpand"
+                    Opacity="0.3" />
+                <StackLayout
+                    x:Name="Tab1"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Padding="0,6,0,0"
+                    HeightRequest="40"
+                    Spacing="0">
+                    <Image
+                        x:Name="Tab1Image"
+                        Source="home"
+                        Style="{StaticResource FooterImageStyle}" />
+                    <Label
+                        x:Name="Tab1Text"
+                        Style="{StaticResource FooterLabelStyle}"
+                        Text="{Binding LabelHome}"
+                        TextColor="White" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="{Binding LabelHome}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <BoxView
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Opacity="0"
+                    WidthRequest="1" />
+                <StackLayout
+                    x:Name="Tab2"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Padding="0,6,0,0"
+                    HeightRequest="40"
+                    Spacing="0">
+                    <Image
+                        x:Name="Tab2Image"
+                        Source="profile"
+                        Style="{StaticResource FooterImageStyle}" />
+                    <Label
+                        x:Name="Tab2Text"
+                        Style="{StaticResource FooterLabelStyle}"
+                        Text="{Binding LabelCall}"
+                        TextColor="White" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="{Binding LabelCall}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <BoxView
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Opacity="0"
+                    WidthRequest="1" />
+                <StackLayout
+                    x:Name="Tab3"
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    Padding="0,6,0,0"
+                    HeightRequest="40"
+                    Spacing="0">
+                    <Image
+                        x:Name="Tab3Image"
+                        Source="sidebar_goal"
+                        Style="{StaticResource FooterImageStyle}" />
+                    <Label
+                        x:Name="Tab3Text"
+                        Style="{StaticResource FooterLabelStyle}"
+                        Text="{Binding LabelFile}"
+                        TextColor="White" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="{Binding LabelFile}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:DemoApp.ViewModels"
+    xmlns:controls="clr-namespace:DemoApp.CustomControls"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:Customize="clr-namespace:DemoApp.Helpers"
+    ios:Page.UseSafeArea="true"
+    x:Class="DemoApp.Views.LoginPage">
+
+    <ContentPage.BindingContext>
+        <vm:LoginPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0" Padding="0">
+            <StackLayout Padding="20,0,20,0" Spacing="10">
+                <Frame Style="{StaticResource FrameStyle}">
+                    <controls:CustomEntry x:Name="txtEmail"
+                                  Text="{Binding Email}"
+                                  Placeholder="Email"
+                                  Style="{StaticResource EntryStyle}"/>
+                </Frame>
+                <Label Text="{Binding EmailErrorMsg}" Style="{StaticResource ErrorMsgStyle}"
+                       LineHeight="1" MaxLines="2" HeightRequest="{Binding ErrorLabelHeight}"/>
+
+                <Frame Style="{StaticResource FrameStyle}">
+                    <controls:CustomEntry x:Name="txtPassword"
+                                  Text='{Binding Password}'  
+                                  Placeholder="Password"
+                                  IsPassword="True"
+                                  Style="{StaticResource EntryStyle}"/>
+                </Frame>
+                <Label Text="{Binding PasswordErrorMsg}" Style="{StaticResource ErrorMsgStyle}"
+                       MaxLines="2" HeightRequest="{Binding ErrorLabelHeight}"/>
+
+                <Button Text="{Binding Source={x:Static Customize:CustomStrings.LoginText}}"
+                        Style="{StaticResource ButtonStyle}"
+                        Command="{Binding LoginCommand}"/>
+                
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

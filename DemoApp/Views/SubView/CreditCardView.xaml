@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pc="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:Localize="clr-namespace:DemoApp.Helpers"
+    xmlns:behaviors="clr-namespace:DemoApp.Behaviors"
+    x:Class="DemoApp.Views.SubView.CreditCardView">
+    <ContentView.Resources>
+        <Color x:Key="SummerSkyBlueColor">#3498DB</Color>
+        <Color x:Key="primary_text">#212121</Color>
+        <Color x:Key="secondary_text">#757575</Color>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
+            <ScrollView
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Padding="10,20"
+                    BackgroundColor="LightGray"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="2"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        Margin="0,0,0,10"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Start"
+                        FontSize="12"
+                        Text="Add card details" />
+                    <Grid RowDefinitions="Auto, *" RowSpacing="0">
+                        <pc:PancakeView
+                            Grid.Row="0"
+                            Padding="30"
+                            BackgroundColor="{StaticResource SummerSkyBlueColor}"
+                            CornerRadius="0,40,60,0">
+                            <StackLayout>
+                                <Localize:ViewFlipper FlipState="{Binding CardSimulationInfo.FlipState}">
+                                    <Localize:ViewFlipper.FrontView>
+                                        <pc:PancakeView
+                                            Padding="10"
+                                            BackgroundColor="#57BCEC"
+                                            CornerRadius="20"
+                                            HeightRequest="180">
+                                            <Grid RowDefinitions="*, Auto">
+
+                                                <Image
+                                                    x:Name="imgLogoCard"
+                                                    Grid.Row="0"
+                                                    Margin="0,0,10,0"
+                                                    HorizontalOptions="End"
+                                                    PropertyChanged="imgLogoCard_PropertyChanged"
+                                                    Source="{Binding LogoCreditCard.Source}" />
+
+                                                <StackLayout Grid.Row="1">
+
+                                                    <Frame
+                                                        Margin="5"
+                                                        Padding="10"
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{Binding Number.BorderSpot.BorderColor}"
+                                                        CornerRadius="15"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            x:Name="lbNumberValue"
+                                                            FontSize="15"
+                                                            Text="XXXX XXXX XXXX XXXX"
+                                                            TextColor="#ecf0f1" />
+                                                    </Frame>
+
+                                                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="0">
+
+                                                        <!--  Card Holder Name  -->
+                                                        <StackLayout Grid.Column="0" Spacing="0">
+                                                            <Label
+                                                                Margin="15,0,0,0"
+                                                                FontSize="11"
+                                                                TextColor="White"
+                                                                Text="Card holder name" />
+                                                            <Frame
+                                                                Margin="5,0,0,15"
+                                                                Padding="10"
+                                                                BackgroundColor="Transparent"
+                                                                BorderColor="{Binding Name.BorderSpot.BorderColor}"
+                                                                CornerRadius="15"
+                                                                HasShadow="False">
+                                                                <Label
+                                                                    x:Name="lbNameValue"
+                                                                    FontSize="11"
+                                                                    Text="{Binding DisplayName}"
+                                                                    TextColor="#ecf0f1" />
+                                                            </Frame>
+                                                        </StackLayout>
+
+                                                        <!--  Validated  -->
+                                                        <StackLayout Grid.Column="1" Spacing="0">
+                                                            <Label
+                                                                Margin="0,0,10,0"
+                                                                HorizontalOptions="End"
+                                                                HorizontalTextAlignment="Center"
+                                                                FontSize="11"
+                                                                TextColor="White"
+                                                                Text="Valid thru" />
+
+                                                            <Frame
+                                                                Margin="0,0,5,15"
+                                                                Padding="10"
+                                                                BackgroundColor="Transparent"
+                                                                BorderColor="{Binding Valid.BorderSpot.BorderColor}"
+                                                                CornerRadius="15"
+                                                                HasShadow="False">
+                                                                <Label
+                                                                    x:Name="lbValidValue"
+                                                                    HorizontalOptions="End"
+                                                                    FontSize="12"
+                                                                    Text="Expiry Date"
+                                                                    TextColor="#ecf0f1" />
+                                                            </Frame>
+                                                        </StackLayout>
+
+                                                    </Grid>
+
+                                                </StackLayout>
+                                            </Grid>
+                                        </pc:PancakeView>
+                                    </Localize:ViewFlipper.FrontView>
+
+                                    <Localize:ViewFlipper.BackView>
+                                        <pc:PancakeView
+                                            Padding="0,10"
+                                            BackgroundColor="#57BCEC"
+                                            CornerRadius="20"
+                                            HeightRequest="180">
+                                            <Grid RowDefinitions="*, Auto">
+                                                <StackLayout Grid.Row="0" Spacing="15">
+                                                    <StackLayout
+                                                        Margin="0,10,0,0"
+                                                        HeightRequest="42" />
+                                                    <Grid ColumnDefinitions="*, 0.5*" ColumnSpacing="5">
+                                                        <Label
+                                                            Grid.Column="0"
+                                                            Margin="10,0,0,0"
+                                                            MaxLines="3"
+                                                            FontSize="11"
+                                                            TextColor="White"
+                                                            Text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+                                                        <Frame
+                                                            Grid.Column="1"
+                                                            Margin="0,0,10,0"
+                                                            Padding="10"
+                                                            BackgroundColor="Transparent"
+                                                            BorderColor="{Binding Cvv.BorderSpot.BorderColor}"
+                                                            CornerRadius="15"
+                                                            HasShadow="False">
+                                                            <Label
+                                                                x:Name="lbCvvValue"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                Text="CVV"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                        </Frame>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <Image
+                                                    Grid.Row="1"
+                                                    Margin="0,0,10,0"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="{Binding LogoCreditCard.Source}" />
+                                            </Grid>
+                                        </pc:PancakeView>
+                                    </Localize:ViewFlipper.BackView>
+                                </Localize:ViewFlipper>
+                            </StackLayout>
+                        </pc:PancakeView>
+                        <StackLayout
+                            Grid.Row="1"
+                            Padding="15,0"
+                            Spacing="0">
+
+                            <!--  Enter your card details text  -->
+                            <Label
+                                Margin="0,10"
+                                FontSize="16"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Enter Card Details"
+                                TextColor="{StaticResource primary_text}"
+                                VerticalOptions="Center" />
+
+                            <!--  Card Number  -->
+                            <StackLayout
+                                IsVisible="{Binding Number.Panel.IsVisible}"
+                                PropertyChanged="StackLayout_PropertyChanged"
+                                Spacing="0">
+
+                                <Label Text="Card Number" TextColor="{StaticResource secondary_text}" />
+
+                                <Entry
+                                    x:Name="entryNumber"
+                                    FontSize="16"
+                                    Keyboard="Numeric"
+                                    ReturnCommand="{Binding NextCommand}"
+                                    ReturnType="Next"
+                                    Text="{Binding Number.Entry.Text}"
+                                    TextChanged="entryNumber_TextChanged">
+                                    <Entry.Behaviors>
+                                        <behaviors:MaskedBehavior Mask="XXXX XXXX XXXX XXXX" />
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Label
+                                    IsVisible="{Binding Number.ErrorMsg.IsVisible}"
+                                    Text="{Binding Number.ErrorMsg.Text}"
+                                    TextColor="Red" />
+
+                            </StackLayout>
+
+                            <!--  Card Holder Name  -->
+                            <StackLayout
+                                IsVisible="{Binding Name.Panel.IsVisible}"
+                                PropertyChanged="StackLayout_PropertyChanged_1"
+                                Spacing="0">
+
+                                <Label Text="Card Holder Name" TextColor="{StaticResource secondary_text}" />
+
+                                <Label
+                                    Padding="0,5,0,0"
+                                    FontSize="16"
+                                    Text="{Binding DisplayName}" />
+
+                                <Label
+                                    IsVisible="{Binding Name.ErrorMsg.IsVisible}"
+                                    Text="{Binding Name.ErrorMsg.Text}"
+                                    TextColor="Red" />
+
+                            </StackLayout>
+
+                            <!--  Valid Thru  -->
+                            <StackLayout
+                                IsVisible="{Binding Valid.Panel.IsVisible}"
+                                PropertyChanged="StackLayout_PropertyChanged_2"
+                                Spacing="0">
+
+                                <Label Text="Valid Thru" TextColor="{StaticResource secondary_text}" />
+
+                                <Entry
+                                    x:Name="entryValid"
+                                    FontSize="16"
+                                    Keyboard="Numeric"
+                                    ReturnCommand="{Binding NextCommand}"
+                                    ReturnType="Next"
+                                    Text="{Binding Valid.Entry.Text}"
+                                    TextChanged="entryValid_TextChanged">
+                                    <Entry.Behaviors>
+                                        <behaviors:MaskedBehavior Mask="XX/XX" />
+                                    </Entry.Behaviors>
+                                </Entry>
+
+                                <Label
+                                    IsVisible="{Binding Valid.ErrorMsg.IsVisible}"
+                                    Text="{Binding Valid.ErrorMsg.Text}"
+                                    TextColor="Red" />
+                            </StackLayout>
+
+                            <!--  CCV  -->
+                            <StackLayout
+                                IsVisible="{Binding Cvv.Panel.IsVisible}"
+                                PropertyChanged="StackLayout_PropertyChanged_3"
+                                Spacing="0">
+
+                                <Label Text="CVV" TextColor="{StaticResource secondary_text}" />
+
+                                <Entry
+                                    x:Name="entryCvv"
+                                    FontSize="16"
+                                    Keyboard="Numeric"
+                                    MaxLength="4"
+                                    ReturnCommand="{Binding NextCommand}"
+                                    ReturnType="Next"
+                                    Text="{Binding Cvv.Entry.Text}"
+                                    TextChanged="entryCvv_TextChanged" />
+
+                                <Label
+                                    IsVisible="{Binding Cvv.ErrorMsg.IsVisible}"
+                                    Text="{Binding Cvv.ErrorMsg.Text}"
+                                    TextColor="Red" />
+
+                            </StackLayout>
+
+                            <pc:PancakeView
+                                Margin="0,5,0,0"
+                                Padding="50,10"
+                                BackgroundColor="{StaticResource SummerSkyBlueColor}"
+                                CornerRadius="20,0,20,20"
+                                HorizontalOptions="End">
+                                <pc:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NextCommand}" />
+                                </pc:PancakeView.GestureRecognizers>
+                                <Label
+                                    FontSize="Medium"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding ButtonText.Text}"
+                                    TextColor="White" />
+                            </pc:PancakeView>
+
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
